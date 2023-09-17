@@ -1,0 +1,83 @@
+import java.util.Scanner;
+
+class Funcionario {
+    protected String nome;
+    protected double salario;
+
+    public Funcionario(String nome, double salario) {
+        this.nome = nome;
+        this.salario = salario;
+    }
+
+    public void exibirDados() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Salário: " + salario);
+    }
+}
+
+class Gerente extends Funcionario {
+    private String departamento;
+
+    public Gerente(String nome, double salario, String departamento) {
+        super(nome, salario);
+        this.departamento = departamento;
+    }
+
+    public void calcularBonus() {
+        double bonus = salario * 0.10;
+        System.out.println("Bônus do Gerente: " + bonus);
+    }
+
+    @Override
+    public void exibirDados() {
+        super.exibirDados();
+        System.out.println("Departamento: " + departamento);
+    }
+}
+
+class Diretor extends Funcionario {
+    private int acoes;
+
+    public Diretor(String nome, double salario, int acoes) {
+        super(nome, salario);
+        this.acoes = acoes;
+    }
+
+    public void exibirDados() {
+        super.exibirDados();
+        System.out.println("Ações: " + acoes);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o nome do Gerente: ");
+        String nomeGerente = scanner.nextLine();
+        System.out.print("Digite o salário do Gerente: ");
+        double salarioGerente = scanner.nextDouble();
+        scanner.nextLine(); 
+        System.out.print("Digite o departamento do Gerente: ");
+        String departamentoGerente = scanner.nextLine();
+
+        System.out.print("Digite o nome do Diretor: ");
+        String nomeDiretor = scanner.nextLine();
+        System.out.print("Digite o salário do Diretor: ");
+        double salarioDiretor = scanner.nextDouble();
+        System.out.print("Digite a quantidade de ações do Diretor: ");
+        int acoesDiretor = scanner.nextInt();
+
+        Gerente gerente = new Gerente(nomeGerente, salarioGerente, departamentoGerente);
+        Diretor diretor = new Diretor(nomeDiretor, salarioDiretor, acoesDiretor);
+
+        System.out.println("\nDados do Gerente:");
+        gerente.exibirDados();
+        gerente.calcularBonus();
+
+        System.out.println("\nDados do Diretor:");
+        diretor.exibirDados();
+
+        scanner.close();
+}
+}
