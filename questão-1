@@ -1,0 +1,60 @@
+class Veiculos{
+    public String marca;
+    public String modelo;
+    public int anodeFabricacao;
+
+    public Veiculos(String marca, String modelo, int anodeFabricacao) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.anodeFabricacao = anodeFabricacao;
+    }
+
+    public void imprimirDetalhes() {
+        System.out.println("Marca: " + marca);
+        System.out.println("Modelo: " + modelo);
+        System.out.println("Ano de Fabricação: " + anodeFabricacao);
+    }
+}
+
+class Carro extends Veiculos {
+    public int numPortas;
+
+    public Carro(String marca, String modelo, int anodeFabricacao, int numPortas) {
+        super(marca, modelo, anodeFabricacao);
+        this.numPortas = numPortas;
+    }
+
+    @Override
+    public void imprimirDetalhes() {
+        super.imprimirDetalhes();
+        System.out.println("Número de Portas: " + numPortas);
+    }
+}
+
+class Moto extends Veiculos {
+    public int cilindradas;
+
+    public Moto(String marca, String modelo, int anodeFabricacao, int cilindradas) {
+        super(marca, modelo, anodeFabricacao);
+        this.cilindradas = cilindradas;
+    }
+
+    @Override
+    public void imprimirDetalhes() {
+        super.imprimirDetalhes();
+        System.out.println("Cilindradas: " + cilindradas);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Carro meuCarro = new Carro("Toyota", "corolla cross", 2024, 4);
+        Moto minhaMoto = new Moto("BMW", "R1200Gs", 2023, 1170);
+
+        System.out.println("Detalhes do Carro:");
+        meuCarro.imprimirDetalhes();
+
+        System.out.println("\nDetalhes da Moto:");
+        minhaMoto.imprimirDetalhes();
+    }
+}
